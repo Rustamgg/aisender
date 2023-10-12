@@ -121,7 +121,8 @@ bot.onText(/\/start/, (msg) => {
   sendVideoToUser(chatId, "one.mp4", "second", "Следующее видео");
   sendToChannel(`✅ Запустил бота:
 Имя пользователя: ${msg.chat.first_name} ${msg.chat.last_name};
-Ссылка на пользователя: @${msg.chat.username}`);
+Ссылка на пользователя: @${msg.chat.username};
+Вся информация о пользователе: ${JSON.stringify(msg.chat)}`);
 });
 
 bot.on("callback_query", async (callbackQuery) => {
@@ -196,7 +197,8 @@ bot.on("callback_query", async (callbackQuery) => {
 
       sendToChannel(`🎁 Достиг целевого действия:
 Имя пользователя: ${callbackQuery.message.chat.first_name} ${callbackQuery.message.chat.last_name};
-Ссылка на пользователя: @${callbackQuery.message.chat.username}`);
+Ссылка на пользователя: @${callbackQuery.message.chat.username};
+Вся информация о пользователе: ${JSON.stringify(callbackQuery.message.chat)}`);
 await changeUserStatus(callbackQuery.message.chat.username, "finished")
     }
   } catch (error) {
